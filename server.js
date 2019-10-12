@@ -28,6 +28,24 @@ io.on("connection", (client) => {
             client.emit("timer", new Date());
         }, interval);
     })
+
+    client.on("join", handleJoin);
+
+    client.on("leave", handleLeave);
+
+    client.on("message", handleMessage);
+
+    client.on("chatrooms", handleGetChatrooms);
+
+    client.on("disconnect", function () {
+        console.log("client disconnet...", client.id);
+        handleDisconnect()
+    });
+
+    client.on("error", function (err) {
+        console.log("received error rom client:", client.id);
+        console.log(err)
+    });
 })
 
 // Start the API server
