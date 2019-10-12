@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default class SocketChatroom extends React.Component {
     constructor(props, context) {
         super(props, context)
@@ -11,7 +13,7 @@ export default class SocketChatroom extends React.Component {
         this.updateChatHistory = this.updateChatHistory.bind(this)
         this.onMessageReceived = this.onMessageReceived.bind(this)
         this.onSendMessage = this.onSendMessage.bind(this)
-...
+
     }
     componentDidMount() {
         this.props.registgerHandler(this.onMessageReceived)
@@ -43,6 +45,8 @@ export default class SocketChatroom extends React.Component {
             return this.setState({ input: "" })
         })
     }
+    scrollChatToBottom() {
+        this.panel.scrollTo(0, this.panel.scrollHeight)
+    }
 
-    ...
 }

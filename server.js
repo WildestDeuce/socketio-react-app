@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3003;
 // socket.io server
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
+const handlers = require('./handlers.js')(app, server, io);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -31,16 +32,16 @@ io.on("connection", (client) => {
 
 
 
-    client.on("join", handleJoin);
+    client.on("join", handlers.handleJoin);
 
-    client.on("leave", handleLeave);
+    client.on("leave", handlers.handleLeave);
 
-    client.on("message", handleMessage);
+    client.on("message", handlers.handleMessage);
 
-    client.on("chatrooms", handleGetChatrooms);
+    client.on("chatrooms", handlers.handleGetChatrooms);
 
     client.on("disconnect", function () {
-        console.log("client disconnet...", client.id);
+        console.log("client disconnect...", client.id);
         handleDisconnect()
     });
 

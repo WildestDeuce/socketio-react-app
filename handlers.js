@@ -117,6 +117,3 @@ module.exports = function (client, clientManager, chatroomManager) {
         handleDisconnect
     }
 }
-
-
-}
