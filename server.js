@@ -29,6 +29,8 @@ io.on("connection", (client) => {
         }, interval);
     })
 
+
+
     client.on("join", handleJoin);
 
     client.on("leave", handleLeave);
