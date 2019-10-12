@@ -2,7 +2,7 @@ const members = new Map();
 let chatHistory = [];
 
 function broadcastMessage(message) {
-    memebers.forEach(m => m.emit("message", message))
+    members.forEach(m => m.emit("message", message))
 };
 
 function addEntry(entry) {
